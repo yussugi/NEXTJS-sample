@@ -2,6 +2,8 @@
 import { GetStaticProps, NextPage, NextPageContext } from "next";
 // Next.jsの組み込みコンポーネント
 import Head from "next/head";
+// Linkコンポーネント
+import Link from "next/link";
 
 // ページコンポーネントのprops型定義(ここでは空にする)
 type SSGProps = {
@@ -26,6 +28,11 @@ const SSG: NextPage<SSGProps> = (props) => {
           このページは静的サイト生成(SSG)によってビルド時に生成されたページです
         </p>
         <p>{message}</p>
+        <br />
+        {/* /ssrへの遷移リンク: aタグをLinkコンポーネントでラップ */}
+        <Link href='/ssr'>
+          <a>GO TO SSR Page</a>
+        </Link>
       </main>
     </div>
   );
@@ -34,8 +41,8 @@ const SSG: NextPage<SSGProps> = (props) => {
 // getStaticPropsはビルド時に実行される(export必須/asyncで非同期にすること/引数はcontext)
 // GetStaticProps<SSGProps>はSSGPropsを引数にとるgetStaticPropsの型
 export const getStaticProps: GetStaticProps<SSGProps> = async (context) => {
-  const timestamp = new Date().toLocaleString();
-  const message = `${timestamp}にgetStaticPropsが実行されました`;
+  const timestampSSG = new Date().toLocaleString();
+  const message = `${timestampSSG}にgetStaticPropsが実行されました`;
   console.log(message);
   return {
     // ここで返したpropsを元にページコンポーネントを描画
