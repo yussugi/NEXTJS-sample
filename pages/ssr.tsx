@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { DelayInput } from "../components/DelayInput/index";
 
 type SSRProps = {
   message: string;
@@ -15,6 +16,8 @@ const SSR: NextPage<SSRProps> = (props) => {
     router.reload();
   };
 
+  const onChange = () => {};
+
   return (
     <div>
       <Head>
@@ -28,6 +31,8 @@ const SSR: NextPage<SSRProps> = (props) => {
         <p>{message}</p>
         <br />
         <button onClick={reload}>reload</button>
+        <br />
+        <DelayInput onChange={onChange} />
       </main>
     </div>
   );
