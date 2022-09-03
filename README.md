@@ -25,6 +25,21 @@ npm install --save styled-components
 npm install --save-dev @types/styled-components
 ```
 
+### Using Storybook
+
+```bash
+npx sb@latest init
+npm run storybook
+```
+
+### Install test framework
+
+```bash
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom
+```
+
+Add `jest.setup.js` file and `jest.config.js` at root directry. Next, add `"test": "jest"` on package.json file.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
